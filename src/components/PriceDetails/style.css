@@ -1,0 +1,10 @@
+.priceDetails {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 5px;
+}
+
+.priceDetails div:first-child {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}

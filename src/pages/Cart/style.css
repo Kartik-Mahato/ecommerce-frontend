@@ -1,0 +1,33 @@
+.cartContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px auto;
+    max-width: 1560px;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 40px;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: 0.2px;
+    background: #fff;
+}
+
+.goToCheckoutBtn {
+    width: 100%;
+    display: flex;
+    background: #ffffff;
+    justify-content: flex-end;
+    box-shadow: 0 0 10px 10px #eee;
+    padding: 10px 0;
+    box-sizing: border-box;
+}
+
+.goToCheckoutBtn button {
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}

@@ -1,0 +1,15 @@
+.card {
+    width: 100%;
+    margin: 10px 10px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px 0px !important;
+    /* background: #fff; */
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px;
+    border-bottom: 2px solid #cecece;
+    font-weight: 400;
+    font-size: 18x;
+}

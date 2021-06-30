@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -mox-osx-font-smoothing: grayscale;
+    overflow-x: hidden !important;
+    background: #cfd2d1;
+}
+
+.flexRow {
+    display: flex;
+}
+
+.sb {
+    justify-content: center;
+}
