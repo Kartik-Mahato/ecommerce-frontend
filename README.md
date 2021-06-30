@@ -1,3 +1,6 @@
+## Watch Live: 
+[https://e-commerce-frontend-1.herokuapp.com/]
+
 # Note:
 ### This project is still under development so many features are not applied.
 
@@ -13,8 +16,8 @@ This project is an ecommerce web application based on the design of official Fli
 
 # Steps to run this code:
 1. Clone the repo or download the zip file
-2. Run `npm install` to install all the dependencies required for this project
-3. Run `yarn start` to start the server on your localhost
+2. Run `npm install / yarn install` to install all the dependencies required for this project
+3. Run `yarn start / npm start` to start the server on your localhost
 
 ## Available Scripts 
 
