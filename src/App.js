@@ -19,6 +19,7 @@ const App = () => {
         dispatch(isUserLogin())
     }, [auth.authenticate])
 
+    
     useEffect(() => {
         dispatch(updateCart())
     }, [auth.authenticate])
