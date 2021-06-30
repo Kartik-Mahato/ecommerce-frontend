@@ -1,4 +1,6 @@
-export const api = `http://localhost:5000/ecommerce/api`;
+const baseUrl = window.location.hostname === 'localhost' ? `http://localhost:5000/ecommerce/api` : `https://ecommerce-backend-rest-server.herokuapp.com`
+
+export const api = `${baseUrl}/ecommerce/api`;
 export const imgPath = (filename) => {
-    return `http://localhost:5000/public/${filename}`
+    return `${baseUrl}/public/${filename}`
 }
