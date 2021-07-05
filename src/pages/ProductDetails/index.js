@@ -39,15 +39,14 @@ const ProductDetails = (props) => {
                     </div>
                     <div className="productDescContainer">
                         <div className="productDescImgContainer">
-
                             <img src={imgPath(product.productDetails.productPictures[0].img)} alt="" />
                         </div>
-                        <div className="flexRow">
+                        <div className="flexRow" style={{ marginTop: '1rem' }}>
                             <MaterialButton
                                 title="ADD TO CART"
                                 bgColor="#ff9f00"
                                 textColor="#ffffff"
-                                style={{ marginRight: '5px' }}
+                                style={{ marginRight: '5px', boxShadow: 'rgba(255, 159, 0, 0.4) 0px 6px 12px -2px, rgba(255, 159, 0, 0.4) 0px 3px 7px -3px' }}
                                 icon={<IoMdCart />}
                                 onClick={() => {
                                     const { _id, name, price } = product.productDetails;
@@ -60,7 +59,7 @@ const ProductDetails = (props) => {
                                 title="BUY NOW"
                                 bgColor="#fb641b"
                                 textColor="#ffffff"
-                                style={{ marginLeft: '5px' }}
+                                style={{ marginLeft: '5px', boxShadow: 'rgba(251, 100, 27, 0.4) 0px 6px 12px -2px, rgba(251, 100, 27, 0.4) 0px 3px 7px -3px' }}
                                 icon={<AiFillThunderbolt />}
                             />
                         </div>
@@ -77,37 +76,34 @@ const ProductDetails = (props) => {
                     </div>
                     <div className="productDetails">
                         <p className="productTitle">{product.productDetails.name}</p>
-                        <div>
+                        <div style={{ marginBottom: '1rem' }}>
                             <span className="ratingCount">4.3 <IoIosStar /></span>
                             <span className="ratingNumbersReviews">72,234 Ratings & 8,140 Reviews</span>
                         </div>
-                        <div className="extraOffer">Extra <BiRupee />4500 off</div>
+                        {/* <div className="extraOffer">Extra <BiRupee />4500 off</div> */}
                         <div className="flexRow priceContainer">
-                            <span className="price"><BiRupee />{product.productDetails.price}</span>
-                            <span className="discount" style={{ margin: '0 10px' }}>22% off</span>
+                            <span className="price">
+                                <BiRupee />{product.productDetails.price.toLocaleString('en-IN')}
+                            </span>
+                            {/* <span className="discount" style={{ margin: '0 10px' }}>22% off</span> */}
                         </div>
                         <div>
-                            <p style={{
-                                color: '#212121',
-                                fontSize: '14px',
-                                fontWeight: '600'
-                            }}>
-                                Available Offers
-                            </p>
                             <p style={{ display: 'flex' }}>
                                 <span style={{
-                                    width: '100px',
-                                    fontSize: '16px',
+                                    width: '110px',
+                                    fontSize: '14px',
                                     color: '#878787',
-                                    fontWeight: '600',
-                                    marginRight: '20px'
+                                    fontWeight: '500',
+                                    paddingRight: '10px'
                                 }}>Description</span>
                                 <span style={{
-                                    fontSize: '18px',
+                                    fontSize: '14px',
                                     fontWeight: '400',
                                     color: '#212121',
                                     textAlign: 'justify',
-                                    marginRight: '20px'
+                                    marginLeft: '2rem',
+                                    marginRight: '5rem',
+                                    lineHeight: 1.3
                                 }}>{product.productDetails.description}</span>
                             </p>
                         </div>

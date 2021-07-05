@@ -13,9 +13,15 @@ const initialState = {
 
 const productReducer = (state = initialState, action) => {
     switch (action.type) {
-        case productConstants.GET_PRODUCTS_BY_SLUG:
+        case productConstants.GET_PRODUCTS_BY_SLUG_REQUEST:
             return state = {
                 ...state,
+                loading: true,
+            }
+        case productConstants.GET_PRODUCTS_BY_SLUG_SUCCESS:
+            return state = {
+                ...state,
+                loading: false,
                 products: action.payload.products,
                 priceRange: action.payload.priceRange,
                 productsByPrice: {

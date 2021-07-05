@@ -1,7 +1,7 @@
-.card {
-    width: 100%;
-    margin: 10px 0px;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px 0px !important;
+/* .card {
+    width: 98% !important;
+    margin: 10px auto !important;
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px !important;
     background: #fff;
 }
 
@@ -9,7 +9,6 @@
     display: flex;
     justify-content: space-between;
     padding: 20px 20px;
-    border-bottom: 2px solid #cecece;
     font-weight: 400;
     font-size: 18px;
     align-items: center;
@@ -44,9 +43,13 @@
 
 .product-title {
     text-align: center;
-    margin: 5px 0;
-    font-weight: 500;
-    font-size: 16px;
+    margin: 6px 0;
+    font-weight: 400;
+    font-size: 14px;
+    color: #000000;
+}
+
+.product-title:hover {
     color: #2874f0;
 }
 
@@ -54,4 +57,4 @@
     font-size: 17px;
     font-weight: 600;
     margin: 8px 0;
-}
+} */

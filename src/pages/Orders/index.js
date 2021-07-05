@@ -5,7 +5,6 @@ import { IoIosArrowForward } from 'react-icons/io';
 
 import './style.css';
 import Layout from '../../components/Layout';
-import Card from '../../components/UI/Card';
 import { getOrders } from '../../actions';
 import { imgPath } from '../../urlConfig';
 import { Breed } from '../../components/MaterialUI';
@@ -31,7 +30,7 @@ const Orders = (props) => {
                 {
                     user.orders.map(order => {
                         return order.items.map((item, index) => (
-                            <Card key={index}>
+                            <div className="order" key={index}>
                                 <Link to={`/order_details/${order._id}`} className="orderItemContainer">
                                     <div className="orderImgContainer">
                                         <img className="orderImg" src={imgPath(item.productId.productPictures[0].img)} alt="product image" />
@@ -39,10 +38,10 @@ const Orders = (props) => {
                                     <div className="orderRow">
                                         <div className="orderName">{item.productId.name}</div>
                                         <div className="orderPrice">₹{item.payablePrice.toLocaleString('en-IN')}</div>
-                                        <div>{order.paymentStatus}</div>
+                                        <div className="orderStatus">{order.paymentStatus}</div>
                                     </div>
                                 </Link>
-                            </Card>
+                            </div>
                         ))
                     })
                 }

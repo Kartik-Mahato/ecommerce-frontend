@@ -2,12 +2,13 @@ import axios from "../helpers/axios"
 import { productConstants } from "./constants";
 
 export const getProductsBySlug = (slug) => async (dispatch) => {
+    dispatch({ type: productConstants.GET_PRODUCTS_BY_SLUG_REQUEST });
+    
     const res = await axios.get(`/products/${slug}`);
-    // console.log(res);
 
     if (res.status === 200) {
         dispatch({
-            type: productConstants.GET_PRODUCTS_BY_SLUG,
+            type: productConstants.GET_PRODUCTS_BY_SLUG_SUCCESS,
             payload: res.data
         })
     } else {

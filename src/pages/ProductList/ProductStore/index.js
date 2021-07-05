@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import './style.css';
+import './style.css'
+import ProductLoaderAnimation from '../../../components/MenuHeader/ProductLoaderAnimation';
 import { getProductsBySlug } from '../../../actions';
 import { imgPath } from '../../../urlConfig';
 
@@ -14,17 +15,28 @@ const ProductStore = (props) => {
     useEffect(() => {
         dispatch(getProductsBySlug(props.match.params.slug))
     }, [dispatch])
+
+    if (product.loading) {
+        return (
+            <div div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <ProductLoaderAnimation />
+            </div >
+        )
+    }
+
     return (
         <>
             {
                 Object.keys(product.productsByPrice).map((key, index) => {
                     return (
-                        <div className="card" key={index}>
+                        <div className="productCard" key={index}>
                             <div className="card-header">
-                                <div>{props.match.params.slug} mobiles under ₹ {priceRange[key]} </div>
+                                <div style={{ fontWeight: 500 }}>
+                                    {props.match.params.slug} mobiles under ₹ {priceRange[key].toLocaleString('en-IN')}
+                                </div>
                                 <button className="viewAllBtn">View All</button>
                             </div>
-                            <div style={{ display: 'flex' }}>
+                            <div style={{ display: 'flex', width: '100%', height: '100%' }}>
                                 {
                                     product.productsByPrice[key].map(product => (
                                         <Link to={`/${product.slug}/${product._id}/p`} style={{ display: 'block' }} className="product-container" key={product._id}>
@@ -54,3 +66,5 @@ const ProductStore = (props) => {
 }
 
 export default ProductStore
+
+

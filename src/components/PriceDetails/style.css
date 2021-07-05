@@ -5,6 +5,27 @@
 }
 
 .priceDetails div:first-child {
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.5px;
+}
+
+.total div {
+    font-weight: 500 !important;
+    font-size: 18px !important;
+}
+
+.card {
+    width: 100%;
+    margin: 0px !important ;
+    box-shadow: rgb(0 0 0 / 25%) 0px 0.0625em 0.0625em, rgb(0 0 0 / 25%) 0px 0.125em 0.5em, rgb(255 255 255 / 10%) 0px 0px 0px 1px inset !important;
+    background: #fff;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px;
+    border-bottom: 2px solid #cecece;
+    font-weight: 400;
+    font-size: 18x;
 }

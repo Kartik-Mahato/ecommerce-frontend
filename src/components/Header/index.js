@@ -65,19 +65,17 @@ const Header = (props) => {
                 menu={
                     <a className="username">
                         {auth.user.firstname}
+                        <IoIosArrowDown />
                     </a>
                 }
                 menus={[
                     { label: 'My Profile', href: '', icon: null },
-                    { label: 'Supercoin Zone', href: '', icon: null },
-                    { label: 'Flipkart Plus Zone', href: '', icon: null },
                     { label: 'Orders', href: `/account/orders`, icon: null },
                     { label: 'Wishlist', href: '', icon: null },
                     { label: 'My Chats', href: '', icon: null },
                     { label: 'Coupons', href: '', icon: null },
                     { label: 'Rewards', href: '', icon: null },
                     { label: 'Notifications', href: '', icon: null },
-                    { label: 'Gift Cards', href: '', icon: null },
                     { label: 'Logout', href: '', icon: null, onClick: logout },
                 ]}
             />
@@ -198,7 +196,7 @@ const Header = (props) => {
                         <img src={goldenStar} className="goldenStar" alt="star" />
                     </a>
                 </div>
-                <div style={{ padding: '0 10px' }}>
+                <div style={{ padding: '0rem 1rem' }}>
                     <div className="searchInputContainer">
                         <input
                             className="searchInput"
@@ -224,7 +222,6 @@ const Header = (props) => {
                             </a>
                         }
                         menus={[
-                            { label: 'Notification Preference', href: '', icon: null },
                             { label: 'Sell on flipkart', href: '', icon: null },
                             { label: '24x7 Customer Care', href: '', icon: null },
                             { label: 'Advertise', href: '', icon: null },

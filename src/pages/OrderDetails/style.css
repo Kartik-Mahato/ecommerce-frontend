@@ -1,21 +1,25 @@
+.card {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px !important;
+    transition: all 0.3s ease;
+}
+
 .delAdrContainer {
     display: flex;
-    box-sizing: border-box;
 }
 
 .delTitle {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
     margin-bottom: 10px;
 }
 
 .delName {
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .delAddress {
-    font-size: 16px;
+    font-size: 14px;
     margin: 10px 0;
 }
 
@@ -28,6 +32,7 @@
 .delAdrDetails {
     padding: 20px;
     border-right: 1px solid #eee;
+    flex: 0.4;
 }
 
 .delMoreActionContainer {
@@ -50,6 +55,7 @@
 .orderTrack {
     width: 400px;
     display: flex;
+    transition: all 0.3s linear;
 }
 
 .orderStatus {
@@ -92,7 +98,8 @@
 }
 
 .delItemName {
-    font-size: 16px;
+    font-size: 13px;
+    font-weight: 400;
 }
 
 .orderInfo .status {
@@ -104,4 +111,22 @@
 .orderInfo .date {
     font-size: 10px;
     width: max-content;
+}
+
+.invoice {
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+
+.invoice img {
+    margin-right: 0.8rem;
+    width: 24.99px;
+    height: 24.99px;
+}
+
+.orderDetailsSummary {
+    display: flex;
+    padding: 20px 0;
+    margin-top: 1rem !important;
 }

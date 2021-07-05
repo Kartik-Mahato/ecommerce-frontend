@@ -3,19 +3,33 @@ body {
 }
 
 .checkoutContainer {
-    width: calc(100% - 400px);
+    width: calc(100% - 500px);
 }
 
 .checkoutStepContainer {
     background: #fff;
     box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.2);
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    min-height: 72px;
 }
 
 .checkoutHeader {
     width: 100%;
     box-sizing: border-box;
-    padding: 10px 20px;
+    padding: 16px 24px;
+}
+
+.checkoutHeader div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.checkoutHeader div img {
+    margin-left: 0.5rem;
+    color: #2874f0;
+    height: 16px;
+    width: 16px;
 }
 
 .checkoutHeader.active {
@@ -28,7 +42,8 @@ body {
     background: #eee;
     color: #2874f0;
     border-radius: 3px;
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 500;
     box-sizing: border-box;
     padding: 3px 7px;
 }
@@ -39,7 +54,7 @@ body {
 
 .stepTitle {
     display: inline-block;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     color: #878787;
     margin-left: 15px;
@@ -50,8 +65,13 @@ body {
 }
 
 .loggedInId {
-    font-size: 12px;
-    margin: 0px 0 10px 60px;
+    font-size: 14px;
+    margin-left: 60px;
+    padding-bottom: 0.7rem;
+}
+
+.loggedInId span:first-child {
+    text-transform: uppercase;
 }
 
 .addressContainer {
@@ -116,13 +136,13 @@ body {
 
 .userDetails span:not(:nth-child(2)) {
     font-family: 'Roboto';
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
 }
 
 .userDetails span:nth-child(2) {
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 12px;
     letter-spacing: 0.8px;
     color: gray;
     background: #eee;
@@ -130,12 +150,24 @@ body {
 
 .userAddress {
     margin-top: 1rem;
+    line-height: 1.5;
+    font-size: 15px;
 }
 
 .selectedAddress {
-    box-sizing: border-box;
     margin-left: 1.2rem;
-    padding: 0px 20px;
+    padding: 0px 20px 10px 20px;
+}
+
+.selectedAddress span:first-child {
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 0.3rem;
+}
+
+.selectedAddress span:last-child {
+    font-size: 15px;
+    font-weight: 400;
 }
 
 .confirmAddress {
@@ -149,6 +181,7 @@ body {
     color: red;
     font-weight: 500;
     cursor: pointer;
+    font-size: 15px;
 }
 
 .paymentOptions {

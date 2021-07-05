@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import './style.css';
-import Layout from '../../components/Layout';
+import Header from '../../components/Header';
 import AddressForm from './AddressForm';
 import PriceDetails from '../../components/PriceDetails';
 import Cart from '../Cart';
-import Card from '../../components/UI/Card';
+import ThankYouPage from '../ThankYouPage';
 import { MaterialButton, MaterialInput } from '../../components/MaterialUI';
 import { addOrder, getAddress } from '../../actions/user.actions';
 import { getCartItems } from '../../actions';
+import checkedLogo from '../../images/checked.svg';
 
 const CheckoutStep = (props) => {
     return (
@@ -18,6 +19,7 @@ const CheckoutStep = (props) => {
                 <div>
                     <span className="stepNumber">{props.stepNumber}</span>
                     <span className="stepTitle">{props.stepTitle}</span>
+                    {props.completed || props.orderConfirmation || props.confirmAddress ? <img src={checkedLogo} alt="checked" /> : null}
                 </div>
             </div>
             {props.body && props.body}
@@ -100,23 +102,24 @@ const Checkout = (props) => {
 
     if (confirmPayment) {
         return (
-            <Layout>
-                <Card>
-                    <div>Thank You for shopping</div>
-                </Card>
-            </Layout>
+            <>
+                <Header />
+                <ThankYouPage />
+            </>
         )
     }
 
     return (
-        <Layout>
-            <div className="cartContainer" style={{ alignItems: 'flex-start' }}>
+        <>
+            <Header />
+            <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '1.5rem' }}>
                 <div className="checkoutContainer">
 
                     <CheckoutStep
                         stepNumber={'1'}
                         stepTitle={'LOGIN'}
                         active={!auth.authenticate}
+                        completed={auth.authenticate}
                         body={
                             auth.authenticate ? (
                                 <div className="loggedInId">
@@ -124,10 +127,8 @@ const Checkout = (props) => {
                                     <span style={{ margin: '0 5px' }}>{auth.user.email}</span>
                                 </div>
                             ) : (
-                                <div>
-                                    <MaterialInput
-                                        label="Email"
-                                    />
+                                <div style={{ textAlign: 'center', color: 'red', fontWeight: 500, padding: '0.5rem 0rem' }}>
+                                    Login to continue
                                 </div>
                             )
                         }
@@ -136,14 +137,17 @@ const Checkout = (props) => {
                         stepNumber={'2'}
                         stepTitle={'DELIVERY ADDRESS'}
                         active={!confirmAddress && auth.authenticate}
+                        confirmAddress={confirmAddress}
                         body={
                             <>
                                 {
                                     confirmAddress ? (
                                         <div className="confirmAddress" onClick={changeConfirmAddress}>
                                             <div className='selectedAddress'>
-                                                {selectedAddress.name}<br />
-                                                {`${selectedAddress.address} - ${selectedAddress.pinCode}`}
+                                                <span>{selectedAddress.name}</span>
+                                                <span>
+                                                    {`${selectedAddress.address} - ${selectedAddress.pinCode}`}
+                                                </span>
                                             </div>
                                             <div className="changeConfirmAddress">
                                                 CHANGE ADDRESS
@@ -163,15 +167,15 @@ const Checkout = (props) => {
                                                             <span>{adr.mobileNumber}</span>
                                                         </div>
                                                         <div className="userAddress">
-                                                            {adr.address}
-                                                            <div>{adr.cityDistrictTown}</div>
-                                                            <div>{adr.state} - {adr.pinCode}</div>
+                                                            {adr.address}, &nbsp;
+                                                            {adr.cityDistrictTown}, &nbsp;
+                                                            {adr.state} - <span style={{ fontWeight: 500 }}>{adr.pinCode}</span>
                                                         </div>
                                                         {
                                                             adr.selected && (
                                                                 <MaterialButton
                                                                     title={'DELIVER HERE'}
-                                                                    style={{ width: '250px', marginTop: '10px' }}
+                                                                    style={{ width: '200px', height: '48px', marginTop: '10px', fontSize: '14px' }}
                                                                     onClick={() => confirmDeliveryAddress(adr)}
                                                                 />
                                                             )
@@ -202,18 +206,33 @@ const Checkout = (props) => {
                         stepNumber={'3'}
                         stepTitle={'ORDER SUMMARY'}
                         active={orderSummary}
+                        orderConfirmation={orderConfirmation}
                         body={
-                            orderSummary ? <Cart onlyCartItems={true} /> : 
-                            orderConfirmation ? <div style={{ marginLeft: '2.4rem', padding: '0px 20px' }}>
-                                {Object.keys(cart.cartItems).length} items
-                            </div> : null
+                            orderSummary ? (
+                                <Cart
+                                    onlyCartItems={true}
+                                    style={{ padding: '18px 24px' }}
+                                />
+                            ) : orderConfirmation ? (
+                                <div style={{ marginLeft: '2.4rem', padding: '0px 20px 10px 20px' }}>
+                                    {Object.keys(cart.cartItems).length > 1 ? (
+                                        <span>
+                                            {Object.keys(cart.cartItems).length} items
+                                        </span>
+                                    ) : (
+                                        <span>
+                                            {Object.keys(cart.cartItems).length} item
+                                        </span>
+                                    )}
+                                </div>
+                            ) : null
                         }
                     />
                     {orderSummary && (
                         <div className="checkoutStepContainer" style={{ display: 'flex', justifyContent: 'space-between', padding: '0px 60px', alignItems: 'center' }}>
-                            <p style={{ fontWeight: 400, fontSize: '18px' }}>
+                            <p style={{ fontWeight: 400, fontSize: '14px', minWidth: 'max-content' }}>
                                 Order Confirmation email will be sent to
-                                <span style={{ color: 'darkBlue', fontWeight: 500, textDecoration: 'underline' }}> {auth.user.email}</span>
+                                <span style={{ fontWeight: 500 }}> {auth.user.email}</span>
                             </p>
                             <MaterialButton
                                 title={'Continue'}
@@ -221,7 +240,8 @@ const Checkout = (props) => {
                                 style={{
                                     width: '200px',
                                     fontSize: '18px',
-                                    letterSpacing: '0.5px'
+                                    letterSpacing: '0.5px',
+                                    float: 'right'
                                 }}
                             />
                         </div>
@@ -249,17 +269,19 @@ const Checkout = (props) => {
                         }
                     />
                 </div>
-                <PriceDetails
-                    totalItem={Object.keys(cart.cartItems).reduce(function (qty, key) {
-                        return qty + cart.cartItems[key].qty;
-                    }, 0)}
-                    totalPrice={Object.keys(cart.cartItems).reduce((totalPrice, key) => {
-                        const { price, qty } = cart.cartItems[key];
-                        return totalPrice + price * qty;
-                    }, 0)}
-                />
+                <div style={{ width: '380px' }}>
+                    <PriceDetails
+                        totalItem={Object.keys(cart.cartItems).reduce(function (qty, key) {
+                            return qty + cart.cartItems[key].qty;
+                        }, 0)}
+                        totalPrice={Object.keys(cart.cartItems).reduce((totalPrice, key) => {
+                            const { price, qty } = cart.cartItems[key];
+                            return totalPrice + price * qty;
+                        }, 0)}
+                    />
+                </div>
             </div>
-        </Layout>
+        </>
     )
 }
 

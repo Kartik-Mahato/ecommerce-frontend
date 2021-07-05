@@ -1,0 +1,43 @@
+.empty-cart {
+    width: 100%;
+}
+
+.empty-cart>div {
+    margin: 1rem 2rem;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.empty-cart-logo {
+    text-align: center;
+}
+
+.empty-cart-text {
+    text-align: center;
+}
+
+.empty-cart-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.empty-cart-button button {
+    background: #2874f0;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.empty-cart-text h3 {
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
+.empty-cart-text h6 {
+    font-weight: 400;
+}
+
+.empty-cart-logo img {
+    height: 162px;
+}

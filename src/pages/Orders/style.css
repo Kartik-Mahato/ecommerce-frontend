@@ -1,5 +1,17 @@
+.order {
+    background: #fff;
+    margin: 1.5rem auto;
+    max-width: 1100px;
+    box-shadow: rgb(50 50 93 / 25%) 0px 2px 5px -1px, rgb(0 0 0 / 30%) 0px 1px 3px -1px !important;
+    transition: all 0.3s ease;
+}
+
+.order:hover {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+}
+
 .orderItemContainer {
-    padding: 10px;
+    padding: 12px 15px;
     box-sizing: border-box;
     display: flex;
     text-decoration: none;
@@ -27,7 +39,8 @@
     width: 300px;
     box-sizing: border-box;
     padding: 0 20px;
-    font-size: 18px;
+    font-size: 14px;
+    font-weight: 400;
     cursor: pointer;
 }
 
@@ -36,5 +49,10 @@
     padding: 0 40px;
     display: flex;
     align-items: flex-start;
-    font-size: 18px;
+    font-size: 14px;
+}
+
+.orderStatus {
+    font-weight: 500;
+    font-size: 14px;
 }

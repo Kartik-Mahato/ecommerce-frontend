@@ -22,7 +22,6 @@ const AddressForm = (props) => {
 
     const inputContainer = {
         width: '100%',
-        marginRight: 10,
     };
 
     const onAddressSubmit = (e) => {
@@ -37,7 +36,7 @@ const AddressForm = (props) => {
     }
 
     useEffect(() => {
-        if(submitFlag) {
+        if (submitFlag) {
             const address = user.address.slice(user.address.length - 1)[0];
             props.onSubmit(address);
         }
@@ -59,7 +58,7 @@ const AddressForm = (props) => {
                 newAddress ? (
                     <div style={{ padding: '0 60px', paddingBottom: '20px' }}>
                         <div className="flexRow">
-                            <div style={inputContainer}>
+                            <div style={{ marginRight: '50px', ...inputContainer }}>
                                 <MaterialInput
                                     label="Name"
                                     value={name}
@@ -75,7 +74,7 @@ const AddressForm = (props) => {
                             </div>
                         </div>
                         <div className="flexRow">
-                            <div style={inputContainer}>
+                            <div style={{ marginRight: '50px', ...inputContainer }}>
                                 <MaterialInput
                                     label="Pincode"
                                     value={pinCode}
@@ -91,7 +90,7 @@ const AddressForm = (props) => {
                             </div>
                         </div>
                         <div className="flexRow">
-                            <div style={inputContainer}>
+                            <div style={{ marginRight: '50px', ...inputContainer }}>
                                 <MaterialInput
                                     label="Address"
                                     value={address}
@@ -105,16 +104,19 @@ const AddressForm = (props) => {
                                     onChange={(e) => setCityDistrictTown(e.target.value)}
                                 />
                             </div>
-                            <div style={inputContainer}>
+                        </div>
+                        <div className="flexRow">
+                            <div style={{ marginRight: '50px', ...inputContainer }}>
                                 <MaterialInput
                                     label="State"
                                     value={state}
                                     onChange={(e) => setState(e.target.value)}
                                 />
                             </div>
+                            <div style={inputContainer}></div>
                         </div>
                         <div className="flexRow">
-                            <div style={inputContainer}>
+                            <div style={{ marginRight: '50px', ...inputContainer }}>
                                 <MaterialInput
                                     label="Landmark (optional)"
                                     value={landmark}

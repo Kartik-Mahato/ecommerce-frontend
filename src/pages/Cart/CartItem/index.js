@@ -23,17 +23,30 @@ const CartItem = (props) => {
 
     if (props.onlyCartProducts) {
         return (
-            <div className="flexRow" style={{ margin: '10px 5px' }}>
-                <div className="cartProImgContainer">
-                    <img src={imgPath(img)} alt="image" />
-                </div>
-                <div className="cartItemDetails">
-                    <div>
-                        <p>{name}</p>
-                        <p>Rs. {price}</p>
+            <>
+                <div className="flexRow" style={{ margin: '10px 5px 0px 5px', ...props.style }}>
+                    <div className="cartProImgContainer">
+                        <img src={imgPath(img)} alt="image" />
+                    </div>
+                    <div className="cartItemDetails">
+                        <div>
+                            <p>{name}</p>
+                            <p>₹{price.toLocaleString('en-IN')}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div style={{ display: 'flex', margin: '5px 25px', paddingBottom: '1rem' }}>
+                    <div className="quantityControl">
+                        <button style={{ color: 'red', border: '1px solid red' }} onClick={setDecrement}>-</button>
+                        <input value={currentQty} readOnly />
+                        <button style={{ color: 'green', border: '1px solid green' }} onClick={setIncrement}>+</button>
+                    </div>
+                    <button className="cartActionBtn" style={{ color: 'red' }} onClick={() => removeItem(_id)}>
+                        Remove
+                    </button>
+                </div>
+            </>
+
         )
     }
 

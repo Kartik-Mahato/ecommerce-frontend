@@ -5,6 +5,8 @@ import './style.css';
 import Layout from '../../components/Layout';
 import Card from '../../components/UI/Card';
 import { getOrder } from '../../actions';
+import invoice from '../../images/invoice.png';
+import { imgPath } from '../../urlConfig';
 
 const OrderDetails = (props) => {
     const dispatch = useDispatch();
@@ -54,33 +56,39 @@ const OrderDetails = (props) => {
         <Layout>
             {orderDetails.address ? (
                 <div style={{ width: '1160px', margin: '10px auto' }}>
-                    <Card>
+                    <div className="card">
                         <div className="delAdrContainer">
                             <div className="delAdrDetails">
                                 <div className="delTitle">Delivery Address</div>
                                 <div className="delName">{orderDetails.address.name}</div>
-                                <div className="delAddress">{orderDetails.address.address}</div>
+                                <div className="delAddress">
+                                    {orderDetails.address.address},&nbsp;{orderDetails.address.landmark},<br />{orderDetails.address.cityDistrictTown},&nbsp;{orderDetails.address.state}-{orderDetails.address.pinCode}
+                                </div>
                                 <div className="delPhoneNumber">
-                                    Phone Number: {orderDetails.address.mobileNumber}
+                                    <span style={{ fontWeight: 500 }}>Phone Number</span>&nbsp; {orderDetails.address.mobileNumber}
                                 </div>
                             </div>
                             <div className="delMoreActionContainer">
                                 <div className="delTitle">More Actions</div>
-                                <div className="delName">Download Invoice</div>
+                                <div className="delName invoice">
+                                    <img src={invoice} alt="invoice" />
+                                    <span>Download Invoice</span>
+                                </div>
                             </div>
                         </div>
-                    </Card>
+                    </div>
                     {orderDetails.items.map((item, index) => (
-                        <Card
-                            style={{ display: "flex", padding: "20px 0", margin: "10px 0" }}
+                        <div
+                            className="card orderDetailsSummary"
+                            key={index}
                         >
                             <div className="flexRow">
                                 <div className="delItemImgContainer">
-                                    <img src={item.productId.productPictures[0].img} alt="" />
+                                    <img src={imgPath(item.productId.productPictures[0].img)} alt="" />
                                 </div>
                                 <div style={{ width: "250px" }}>
                                     <div className="delItemName">{item.productId.name}</div>
-                                    <span>₹{item.payablePrice.toLocaleString('en-IN')}</span>
+                                    <span style={{ marginTop: '0.5rem' }}>₹{item.payablePrice.toLocaleString('en-IN')}</span>
                                 </div>
                             </div>
                             <div style={{ padding: "25px 50px" }}>
@@ -89,6 +97,7 @@ const OrderDetails = (props) => {
                                         <div
                                             className={`orderStatus ${status.isCompleted ? "active" : ""
                                                 }`}
+                                            key={status._id}
                                         >
                                             <div
                                                 className={`point ${status.isCompleted ? "active" : ""}`}
@@ -105,7 +114,7 @@ const OrderDetails = (props) => {
                                 {orderDetails.orderStatus[3].isCompleted &&
                                     `Delivered on ${formatDate2(orderDetails.orderStatus[3].date)}`}
                             </div>
-                        </Card>
+                        </div>
                     ))}
                 </div>
             ) : null}

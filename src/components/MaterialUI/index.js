@@ -67,7 +67,6 @@ const MaterialButton = (props) => {
         <div style={{
             width: '100%',
             cursor: 'pointer',
-            ...props.style
         }}>
             <button
                 className="materialButton"

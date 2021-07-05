@@ -13,8 +13,10 @@
 }
 
 .menu-header>ul {
+    height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     margin: 0 50px;
     position: relative;
 }
@@ -24,7 +26,7 @@
     line-height: 40px;
     cursor: pointer;
     padding: 0 20px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.8px;
 }
@@ -57,7 +59,7 @@
 
 .menu-header>ul>li>ul>li>a {
     display: block;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     text-decoration: none;
     color: #000 !important;
@@ -67,4 +69,10 @@
     display: block;
     padding: 6px 0;
     color: #707070;
+    font-size: 15px;   
+    font-weight: 600; 
+}
+
+.menu-header>ul>li>ul>li a:hover {
+    color: #2874f0;
 }
