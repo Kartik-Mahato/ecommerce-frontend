@@ -52,7 +52,7 @@ const MaterialInput = (props) => {
             </div>
             {touch && (
                 <div className="errorMessage">
-                    {`${props.label.split('Enter ')} is required`}
+                    {`${props.label.split('Enter')[1]} is required`}
                 </div>
             )}
         </div>

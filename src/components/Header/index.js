@@ -14,6 +14,7 @@ import {
     DropdownMenu
 } from '../MaterialUI';
 import Cart from '../UI/Cart';
+import Loader from '../LoadingAnimation/Loader';
 
 const Header = (props) => {
 
@@ -23,14 +24,19 @@ const Header = (props) => {
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState(null);
     const dispatch = useDispatch();
     const auth = useSelector(state => state.auth);
     const cart = useSelector(state => state.cart);
 
     const userSignup = () => {
         const data = { firstname, lastname, email, password };
-        if (firstname === "" || lastname === "" || email === "" || password === "") return;
+        if (firstname === "" || lastname === "" || email === "" || password === "") {
+            setError('All fields are mandatory!!!');
+            return;
+        };
         dispatch(register(data));
+        setError(null);
         setSignUp(false);
         setLoginModal(false);
         setFirstname('');
@@ -43,7 +49,12 @@ const Header = (props) => {
         if (signup) {
             userSignup();
         } else {
+            if (email === "" || password === "") {
+                setError('All fields are mandatory!!!');
+                return;
+            }
             dispatch(login({ email, password }));
+            setError(null);
             setEmail('');
             setPassword('');
         }
@@ -125,11 +136,15 @@ const Header = (props) => {
         )
     }
 
+
     return (
         <div className="header">
             <Modal
                 visible={loginModal}
-                onClose={() => setLoginModal(false)}
+                onClose={() => {
+                    setError(null)
+                    setLoginModal(false)
+                }}
             >
                 <div className="authContainer">
                     <div className="row">
@@ -138,52 +153,66 @@ const Header = (props) => {
                             <p>Get access to your Orders, Wishlist and Recommendations</p>
                         </div>
                         <div className="rightspace">
-                            {signup && (
-                                <>
-                                    <MaterialInput
-                                        type="text"
-                                        label="Enter First name"
-                                        value={firstname}
-                                        onChange={e => setFirstname(e.target.value)}
-                                    />
-                                    <MaterialInput
-                                        type="text"
-                                        label="Enter Last name"
-                                        value={lastname}
-                                        onChange={e => setLastname(e.target.value)}
-                                    />
-                                </>
-                            )}
-                            <MaterialInput
-                                type="text"
-                                label="Enter Email/Enter Mobile Number"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
+                            {
+                                auth.authenticating ? <Loader /> : (
+                                    <>
+                                        <span className="errorMessage">
+                                            {error ? (
+                                                <span className="errorMessage">{error}</span>
+                                            ) : null}
+                                        </span>
+                                        <>
+                                            {signup && (
+                                                <>
+                                                    <MaterialInput
+                                                        type="text"
+                                                        label="Enter First name"
+                                                        value={firstname}
+                                                        onChange={e => setFirstname(e.target.value)}
+                                                    />
+                                                    <MaterialInput
+                                                        type="text"
+                                                        label="Enter Last name"
+                                                        value={lastname}
+                                                        onChange={e => setLastname(e.target.value)}
+                                                    />
+                                                </>
+                                            )}
+                                        </>
+                                        <MaterialInput
+                                            type="text"
+                                            label="Enter Email"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                        />
 
-                            <MaterialInput
-                                type="password"
-                                label="Enter Password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            // rightElement={<a href="#">Forgot?</a>}
-                            />
-                            <MaterialButton
-                                title={signup ? "Register" : "Login"}
-                                bgColor="#fb641b"
-                                textColor="#ffffff"
-                                style={{ margin: '30px  0px 0px 0px' }}
-                                onClick={userLogin}
-                            />
-                            <p style={{ textAlign: 'center' }}>OR</p>
-                            <MaterialButton
-                                title="Request OTP"
-                                bgColor="#ffffff"
-                                textColor="#2b74f0"
-                            />
+                                        <MaterialInput
+                                            type="password"
+                                            label="Enter Password"
+                                            value={password}
+                                            onChange={(e) => setPassword(e.target.value)}
+                                        // rightElement={<a href="#">Forgot?</a>}
+                                        />
+                                        <MaterialButton
+                                            title={signup ? "Register" : "Login"}
+                                            bgColor="#fb641b"
+                                            textColor="#ffffff"
+                                            style={{ margin: '30px  0px 0px 0px' }}
+                                            onClick={userLogin}
+                                        />
+                                        <p style={{ textAlign: 'center' }}>OR</p>
+                                        <MaterialButton
+                                            title="Request OTP"
+                                            bgColor="#ffffff"
+                                            textColor="#2b74f0"
+                                        />
+                                    </>
+                                )
+                            }
                         </div>
                     </div>
                 </div>
+
             </Modal>
             <div className="subHeader">
                 <div className="logo">
@@ -200,7 +229,7 @@ const Header = (props) => {
                     <div className="searchInputContainer">
                         <input
                             className="searchInput"
-                            placeholder={'search for products, brands and more'}
+                            placeholder={'search functionality is not added yet'}
                         />
                         <div className="searchIconContainer">
                             <IoIosSearch style={{

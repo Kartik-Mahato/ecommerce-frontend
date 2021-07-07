@@ -3,33 +3,10 @@ import { authConstants, cartConstants } from "./constants"
 
 export const register = (data) => async (dispatch) => {
     dispatch({ type: authConstants.SIGNUP_REQUEST });
-    const res = await axios.post('/signup', data);
-    if (res.status === 201) {
-        dispatch({ type: authConstants.SIGNUP_SUCCESS });
-        const { token, user } = res.data;
-        localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(user));
-        dispatch({
-            type: authConstants.LOGIN_SUCCESS,
-            payload: { token, user }
-        });
-    }
-    else {
-        dispatch({
-            type: authConstants.SIGNUP_FAILURE
-        })
-    }
-}
-
-export const login = (user) => async (dispatch) => {
-    dispatch({ type: authConstants.LOGIN_REQUEST });
-
     try {
-        const res = await axios.post('/signin', {
-            ...user
-        });
-        if (res.status === 200) {
-            // console.log(res.data);
+        const res = await axios.post('/signup', data);
+        if (res.status === 201) {
+            dispatch({ type: authConstants.SIGNUP_SUCCESS });
             const { token, user } = res.data;
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(user));
@@ -38,10 +15,38 @@ export const login = (user) => async (dispatch) => {
                 payload: { token, user }
             });
         }
-    } catch (error) {
+    } catch (err) {
+        let error = err.response.data.errors ? err.response.data.errors : err.response.data.message;
+        console.log(error)
+        dispatch({
+            type: authConstants.SIGNUP_FAILURE,
+            payload: { error }
+        });
+    }
+}
+
+export const login = (user) => async (dispatch) => {
+    dispatch({ type: authConstants.LOGIN_REQUEST });
+    try {
+        const res = await axios.post('/signin', {
+            ...user
+        });
+        if (res.status === 200) {
+            const { token, user } = res.data;
+            localStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify(user));
+            dispatch({
+                type: authConstants.LOGIN_SUCCESS,
+                payload: { token, user }
+            });
+        }
+    } catch (err) {
+        let error = err.response.data.errors ? err.response.data.errors : err.response.data.message;
+        console.log(error)
         dispatch({
             type: authConstants.LOGIN_FAILURE,
-        })
+            payload: { error }
+        });
     }
 }
 
@@ -56,9 +61,7 @@ export const isUserLogin = () => async (dispatch) => {
     } else {
         dispatch({
             type: authConstants.LOGIN_FAILURE,
-            payload: {
-                error: "Failed to Login"
-            }
+            payload: { error: "Failed to Login" }
         })
     }
 }

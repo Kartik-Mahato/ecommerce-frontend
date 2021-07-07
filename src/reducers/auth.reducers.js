@@ -17,8 +17,6 @@ const initialState = {
 }
 
 const authReducer = (state = initialState, action) => {
-    // console.log(action);
-
     switch (action.type) {
         case authConstants.LOGIN_REQUEST:
             return state = {
@@ -38,7 +36,8 @@ const authReducer = (state = initialState, action) => {
             return state = {
                 ...state,
                 authenticating: false,
-                authenticate: false
+                authenticate: false,
+                message: action.payload.error
             }
         case authConstants.LOGOUT_REQUEST:
             return state = {
@@ -60,7 +59,7 @@ const authReducer = (state = initialState, action) => {
             return state = {
                 ...initialState,
                 loading: false,
-                error: action.payload.error
+                message: action.payload.error
             }
         default:
             return state;
