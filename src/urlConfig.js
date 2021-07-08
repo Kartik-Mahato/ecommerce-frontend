@@ -2,5 +2,5 @@ const baseUrl = window.location.hostname === 'localhost' ? `http://localhost:500
 
 export const api = `${baseUrl}/ecommerce/api`;
 export const imgPath = (filename) => {
-    return `${baseUrl}/${filename}`
+    return `${baseUrl}/public/${filename}`
 }

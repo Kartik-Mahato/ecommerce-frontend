@@ -24,6 +24,9 @@ const ProductPage = (props) => {
     return (
         <div style={{ margin: '0 10px' }}>
             <h3>{page.title}</h3>
+            <div>
+                <span style={{color: 'red'}}>No products as of now</span>
+            </div>
             <Carousel
                 renderThumbs={() => { }}
                 autoPlay
@@ -35,7 +38,8 @@ const ProductPage = (props) => {
                 {
                     page.banners && page.banners.map((banner, index) => (
                         <a
-                            href={banner.navigateTo}
+                            // href={banner.navigateTo}
+                            href="#"
                             key={index}
                             style={{ display: 'block', maxHeight: '400px' }}
                         >

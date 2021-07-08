@@ -13,7 +13,7 @@ const ProductList = (props) => {
 
     const renderProducts = () => {
         const params = getParams(props.location.search);
-        // console.log(params);
+        console.log(params);
 
         switch (params.type) {
             case 'store':
