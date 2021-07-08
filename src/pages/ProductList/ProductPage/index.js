@@ -7,6 +7,7 @@ import Card from '../../../components/UI/Card';
 import { getProductPage } from '../../../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import getParams from '../../../utils/getParams';
+import { imgPath } from '../../../urlConfig';
 
 const ProductPage = (props) => {
     const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const ProductPage = (props) => {
         const params = getParams(props.location.search);
         const payload = { params }
         dispatch(getProductPage(payload));
+        // console.log(page)
     }, [dispatch]);
 
     return (
@@ -35,31 +37,35 @@ const ProductPage = (props) => {
                         <a
                             href={banner.navigateTo}
                             key={index}
-                            style={{ display: 'block', maxHeight: '300px' }}
+                            style={{ display: 'block', maxHeight: '400px' }}
                         >
-                            <img style={{ width: '100%' }} src={banner.img} alt="banne1" />
+                            <img style={{ width: '100%' }} src={imgPath(banner.img)} alt="banner" />
                         </a>
                     ))
                 }
             </Carousel>
-            <div style={{ display: 'flex', justifyContent: 'flex-start', flexWrap: 'wrap' }}>
+            {/* <div style={{ display: 'flex', justifyContent: 'justify-around', flexWrap: 'wrap' }}>
                 {
                     page.products && page.products.map((product, index) => (
                         <Card
                             key={index}
-                            style={{
-                                width: '150px',
-                                height: '200px',
-                                margin: '10px 20px'
-                            }}
+                            // style={storeCard}
+                            className="storeCard"
+                            
                         >
-                            <img style={{ width: '100%', height: '100%', objectFit: 'contain' }} src={product.img} alt="product" />
+                            <img style={{ width: '100%', height: '100%', objectFit: 'contain' }} src={imgPath(product.img)} alt="product" />
                         </Card>
                     ))
                 }
-            </div>
+            </div> */}
         </div>
     )
 }
 
 export default ProductPage
+
+// const storeCard = {
+//     width: '150px',
+//     height: '200px',
+//     margin: '20px 20px'
+// }

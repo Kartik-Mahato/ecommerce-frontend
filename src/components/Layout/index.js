@@ -3,7 +3,7 @@ import React from 'react';
 import Header from '../Header';
 import MenuHeader from '../MenuHeader'
 
-const Layut = (props) => {
+const Layout = (props) => {
     return (
         <>
             <Header />
@@ -13,4 +13,4 @@ const Layut = (props) => {
     )
 }
 
-export default Layut
+export default Layout

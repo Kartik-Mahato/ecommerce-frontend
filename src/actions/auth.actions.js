@@ -26,8 +26,8 @@ export const register = (data) => async (dispatch) => {
 }
 
 export const login = (user) => async (dispatch) => {
-    dispatch({ type: authConstants.LOGIN_REQUEST });
     try {
+        dispatch({ type: authConstants.LOGIN_REQUEST });
         const res = await axios.post('/signin', {
             ...user
         });
@@ -42,11 +42,11 @@ export const login = (user) => async (dispatch) => {
         }
     } catch (err) {
         let error = err.response.data.errors ? err.response.data.errors : err.response.data.message;
-        console.log(error)
+        // console.log('nsns', error)
         dispatch({
             type: authConstants.LOGIN_FAILURE,
             payload: { error }
-        });
+        })
     }
 }
 
@@ -61,7 +61,7 @@ export const isUserLogin = () => async (dispatch) => {
     } else {
         dispatch({
             type: authConstants.LOGIN_FAILURE,
-            payload: { error: "Failed to Login" }
+            payload: { error: "" }
         })
     }
 }

@@ -70,6 +70,13 @@ const Header = (props) => {
         }
     }, [auth.authenticate]);
 
+    useEffect(() => {
+        // console.log(auth.error)
+        if (auth.error) {
+            setError(auth.error)
+        }
+    }, [auth.error])
+
     const renderLoggedInMenu = () => {
         return (
             <DropdownMenu
@@ -135,7 +142,6 @@ const Header = (props) => {
             />
         )
     }
-
 
     return (
         <div className="header">

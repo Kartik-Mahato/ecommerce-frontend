@@ -18,6 +18,13 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
+        case authConstants.LOGIN_FAILURE:
+            return state = {
+                ...state,
+                authenticating: false,
+                authenticate: false,
+                error: action.payload.error
+            }
         case authConstants.LOGIN_REQUEST:
             return state = {
                 ...state,
@@ -31,13 +38,6 @@ const authReducer = (state = initialState, action) => {
                 token: action.payload.token,
                 authenticating: false,
                 authenticate: true
-            }
-        case authReducer.LOGIN_FAILURE:
-            return state = {
-                ...state,
-                authenticating: false,
-                authenticate: false,
-                message: action.payload.error
             }
         case authConstants.LOGOUT_REQUEST:
             return state = {
