@@ -231,7 +231,7 @@ const Header = (props) => {
                         <img src={goldenStar} className="goldenStar" alt="star" />
                     </a>
                 </div>
-                <div style={{ padding: '0rem 1rem' }}>
+                <div className="search">
                     <div className="searchInputContainer">
                         <input
                             className="searchInput"
@@ -249,7 +249,7 @@ const Header = (props) => {
                     {
                         auth.authenticate ? renderLoggedInMenu() : renderNonLoggedInMenu()
                     }
-                    <DropdownMenu
+                    {/* <DropdownMenu
                         menu={
                             <a className="more">
                                 <span>More</span>
@@ -262,7 +262,7 @@ const Header = (props) => {
                             { label: 'Advertise', href: '', icon: null },
                             { label: 'Download App', href: '', icon: null }
                         ]}
-                    />
+                    /> */}
                     <div>
                         <Link to={'/cart'} className="cart">
                             <Cart count={Object.keys(cart.cartItems).length} />

@@ -3,7 +3,7 @@
     box-sizing: border-box;
     padding: 10px;
     background: #fff;
-    height: calc(100vh - 97px);
+
 }
 
 .flexRow {
@@ -70,6 +70,10 @@
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+}
+
+.breed {
+    width: 100%;
 }
 
 .breed ul {
@@ -141,4 +145,32 @@
     font-weight: 500;
     display: flex;
     align-items: center;
+}
+
+@media only screen and (max-width: 1120px) {
+    .breed {
+        width: 90%;
+    }
+
+    .breed ul li a {
+        letter-spacing: 0.1px;
+        font-size: 12px;
+    }
+
+    .productDescContainer {
+        width: 400px;
+    }
+
+    .productDescImgContainer {
+        width: 300px;
+        height: 328px;
+    }
+
+    .verticalImageStack {
+        width: 45px;
+    }
+
+    .flexRow div button {
+        font-size: 15px;
+    }
 }

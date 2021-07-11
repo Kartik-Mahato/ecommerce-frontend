@@ -76,3 +76,23 @@
 .menu-header>ul>li>ul>li a:hover {
     color: #2874f0;
 }
+
+@media only screen and (max-width: 596px) {
+    .menu-header>ul>li>span {
+        padding: 0px 10px;
+    }
+}
+
+@media only screen and (max-width: 506px) {
+    .menu-header>ul>li>span {
+        padding: 0px 10px;
+    }
+    .menu-header>ul>li>span {
+        line-height: 16px;
+        font-size: 12px;
+    }
+    .menu-header>ul>li>ul {
+        top: 40px;
+    }
+}
+

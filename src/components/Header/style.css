@@ -27,6 +27,10 @@
     width: 75px;
 }
 
+.search {
+    padding: 0rem 1rem;
+}
+
 .exploreText {
     font-size: 12px;
     font-style: italic;
@@ -88,7 +92,7 @@ input.searchInput {
 
 .rightMenu {
     display: flex;
-    flex: 0.9;
+    flex: 0.7;
     justify-content: flex-end;
     align-items: center;
 }
@@ -101,7 +105,6 @@ input.searchInput {
     text-align: center;
     line-height: 30px;
     color: #2874f0;
-    font-weight: 500;
     cursor: pointer;
     padding: 2px 10px;
     font-size: 18px;
@@ -167,4 +170,136 @@ input.searchInput {
     flex-direction: column;
     align-items: center;
     padding: 0.8rem 2rem;
+}
+
+@media only screen and (max-width: 1120px) {
+    .searchInputContainer {
+        width: 480px;
+    }
+    input.searchInput {
+        width: 400px;
+    }
+}
+
+@media only screen and (max-width: 980px) {
+    .searchInputContainer {
+        width: 380px;
+    }
+    input.searchInput {
+        width: 300px;
+    }
+}
+
+@media only screen and (max-width: 840px) {
+    .rightMenu {
+        justify-content: space-between;
+    }
+    .logo {
+        align-items: center;
+    }
+    .logo .logoimage {
+        width: 60px;
+    }
+    .search {
+        padding: 0rem 3rem 0rem 0rem;
+    }
+    .searchIconContainer {
+        font-size: 22px;
+    }
+    .loginButton {
+        display: block;
+        width: 80px;
+        height: 30px;
+        background: #fff;
+        text-align: center;
+        line-height: 30px;
+        color: #2874f0;
+        cursor: pointer;
+        padding: 2px 6px;
+        font-size: 16px;
+        font-weight: 600;
+    }
+    .cart {
+        margin: 0;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .subHeader {
+        max-width: 768px;
+    }
+    .logo {
+        width: 116px;
+    }
+    .search {
+        padding-right: 4rem;
+    }
+    input.searchInput {
+        width: 295px;
+    }
+    .searchIconContainer {
+        font-size: 20px;
+    }
+    .searchInputContainer {
+        width: 350px;
+    }
+}
+
+@media only screen and (max-width: 692px) {
+    .exploreText {
+        font-size: 10px;
+    }
+    .plusText {
+        font-size: 10px;
+    }
+    .logo .goldenStar {
+        width: 8px;
+        height: 8px;
+    }
+    .logo .logoimage {
+        width: 50px;
+    }
+    .search {
+        padding-right: 2rem;
+    }
+    .searchInputContainer {
+        width: 280px;
+    }
+    input.searchInput {
+        width: 225px;
+    }
+    ::placeholder {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 596px) {
+    .searchInputContainer {
+        width: 200px;
+    }
+    input.searchInput {
+        width: 160px;
+    }
+    ::placeholder {
+        font-size: 8px;
+    }
+}
+
+@media only screen and (max-width: 732px) {
+    .leftspace {
+        width: 35%;
+        height: 87%;
+        padding: 10px 33px;
+    }
+    .rightspace {
+        flex: 1;
+        margin-right: 5rem;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .rightspace {
+        flex: 1;
+        margin-right: 7rem;
+    }
 }
