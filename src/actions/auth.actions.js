@@ -16,8 +16,9 @@ export const register = (data) => async (dispatch) => {
             });
         }
     } catch (err) {
+        console.log(err.response);
         let error = err.response.data.errors ? err.response.data.errors : err.response.data.message;
-        console.log(error)
+        // console.log(error)
         dispatch({
             type: authConstants.SIGNUP_FAILURE,
             payload: { error }

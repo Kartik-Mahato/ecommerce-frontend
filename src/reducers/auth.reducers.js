@@ -12,8 +12,7 @@ const initialState = {
     authenticate: false,
     authenticating: false,
     loading: false,
-    error: null,
-    message: ''
+    error: null
 }
 
 const authReducer = (state = initialState, action) => {
@@ -58,8 +57,9 @@ const authReducer = (state = initialState, action) => {
         case authConstants.SIGNUP_FAILURE:
             return state = {
                 ...initialState,
-                loading: false,
-                message: action.payload.error
+                authenticating: false,
+                authenticate: false,
+                error: action.payload.error
             }
         default:
             return state;
