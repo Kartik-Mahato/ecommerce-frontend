@@ -44,3 +44,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
+## Note
+
+The code for the backend of this project as well as the admin-panel can be found at (https://github.com/Kartik-Mahato/ecommerce-backend-public)
